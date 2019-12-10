@@ -12,7 +12,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       state: {
-        allowNull: false,
         type: Sequelize.ENUM('to_do', 'done'),
         defaultValue: 'to_do'
       },

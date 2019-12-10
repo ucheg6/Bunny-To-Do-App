@@ -1,6 +1,6 @@
-import UserTasks from '../../database/models/user_tasks';
+import models from '../../database/models';
 /**
- * Todo Controller Class
+ * Task Controller Class
  *
  */
 class Task {
@@ -12,7 +12,7 @@ class Task {
 	 */
 	static async createTasks(request, response) {
 		try {
-			const newTask = await UserTasks.create({
+			const newTask = await models.User_Tasks.create({
 				description: request.body.description,
 			});
 			return response.status(201).json({
