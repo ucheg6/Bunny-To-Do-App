@@ -1,9 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User_Tasks = sequelize.define('User_Tasks', {
-    id: DataTypes.INTEGER,
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     description: DataTypes.STRING,
-    state: DataTypes.ENUM,
+    state:{ 
+      type: DataTypes.ENUM('to_do', 'done'),
+      defaultValue: 'to_do'
+    },
     user_id: DataTypes.INTEGER
   }, {});
   User_Tasks.associate = function(models) {

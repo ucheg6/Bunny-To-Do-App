@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 import config from './database/config/config'
-
+import router from './src/routes/index'
 dotenv.config();
 
 // Set up express app
@@ -15,6 +15,7 @@ app.use(logger('dev'));
 // Parse the body of incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/api/v1', router);
 
 app.get('/', (request, response) => {
     const welcome = "Welcome to Bunny TO-DO API Version 1.0";
