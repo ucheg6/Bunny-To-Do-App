@@ -55,7 +55,7 @@ class Task {
 	}
 	static async updateTask(request, response) {
 		const { id } = request.params;
-		const { description } = request.body;
+		const { description, state } = request.body;
 		try {
 			const foundTask = await models.User_Tasks.findOne({
 				where: { id },
@@ -67,7 +67,7 @@ class Task {
 				});
 			}
 			const updatedTask = await foundTask.update({
-				description
+				description, state
 			  },
 			  {
 				where: { id }
@@ -76,6 +76,30 @@ class Task {
 				success: true,
 				message: 'Task successfully updated',
 				updatedTask
+			});
+		} catch (error) {
+			return response.status(400).json({
+				success: false,
+				message: error.message,
+			});
+		}
+	}
+	static async deleteTask(request, response) {
+		const { id } = request.params;
+		try {
+			const foundTask = await models.User_Tasks.findOne({
+				where: { id },
+			  });
+			if (!foundTask) {
+				return response.status(404).json({
+					message: 'Task does not exist',
+					success: false,
+				});
+			}
+			await foundTask.destroy();
+			return response.status(202).json({
+				success: true,
+				message: 'Task successfully deleted',
 			});
 		} catch (error) {
 			return response.status(400).json({

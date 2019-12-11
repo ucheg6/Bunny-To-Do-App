@@ -6,5 +6,6 @@ const router = new Router();
 router.post('/task', isAuthenticated, Task.createTasks);
 router.get('/tasks/:id', isAuthenticated, Task.listUserTasks);
 router.put('/tasks/:id', isAuthenticated, Task.updateTask);
+router.delete('/tasks/:id', isAuthenticated, Task.deleteTask);
 
 export default router;
