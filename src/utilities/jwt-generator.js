@@ -7,9 +7,9 @@ const env = process.env.NODE_ENV || 'development';
  * @param {id} id User Id
  * @returns {string} User Token
  */
-const createToken = (id) => {
+const createToken = (id, name) => {
   const token = jwt.sign(
-    { id },
+    { id, name },
     config[env].secret,
     { expiresIn: 604800 },
   );

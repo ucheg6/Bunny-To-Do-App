@@ -17,7 +17,7 @@ class User {
 			const newUser = await models.User.findOrCreate({
 				where: { Name },
 			});
-			const token = generateToken(newUser.id, newUser.Name);
+			const token = generateToken(newUser[0].dataValues.id, newUser[0].dataValues.Name);
 			return response.status(201).json({
 				success: true,
 				message: `Hello Welcome to Bunny to-do app`,
