@@ -2,8 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import config from './database/config/config'
-import router from './src/routes/index'
+import config from '../database/config/config'
+import router from './routes'
 dotenv.config();
 
 // Set up express app

@@ -4,7 +4,12 @@
   "description": "Simple To-Do App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node app.js",
+    "start:dev": "nodemon --exec babel-node src/app.js",
+    "db-migrate": "sequelize db:migrate",
+    "db-seed": "sequelize db:seed:all",
+    "db-migrate-undo": "sequelize db:migrate:undo",
+    "build": "rm -rf ./build && npx babel src -d build",
+    "start": "npm run build && node build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,9 +35,13 @@
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/node": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "nodemon": "^2.0.1"
+  },
+  "engines": {
+    "node": "8.12.0"
   }
 }
