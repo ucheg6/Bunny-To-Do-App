@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _dotenv = _interopRequireDefault(require("dotenv"));
 var _config = _interopRequireDefault(require("../database/config/config"));
 
 var _routes = _interopRequireDefault(require("./routes"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 _dotenv["default"].config(); // Set up express app
 

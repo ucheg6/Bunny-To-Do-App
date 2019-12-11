@@ -1,21 +1,21 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
 var _models = _interopRequireDefault(require("../../database/models"));
 
 var _jwtGenerator = _interopRequireDefault(require("../utilities/jwt-generator"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
  * Task Controller Class
@@ -25,10 +25,10 @@ var User =
 /*#__PURE__*/
 function () {
   function User() {
-    _classCallCheck(this, User);
+    (0, _classCallCheck2["default"])(this, User);
   }
 
-  _createClass(User, null, [{
+  (0, _createClass2["default"])(User, null, [{
     key: "createUser",
 
     /**
@@ -39,14 +39,14 @@ function () {
      */
     value: function createUser(request, response) {
       var Name, newUser, token;
-      return regeneratorRuntime.async(function createUser$(_context) {
+      return _regenerator["default"].async(function createUser$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               Name = request.body.Name;
               _context.prev = 1;
               _context.next = 4;
-              return regeneratorRuntime.awrap(_models["default"].User.findOrCreate({
+              return _regenerator["default"].awrap(_models["default"].User.findOrCreate({
                 where: {
                   Name: Name
                 }
@@ -81,13 +81,13 @@ function () {
     key: "listUsers",
     value: function listUsers(request, response) {
       var users;
-      return regeneratorRuntime.async(function listUsers$(_context2) {
+      return _regenerator["default"].async(function listUsers$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return regeneratorRuntime.awrap(_models["default"].User.findAll());
+              return _regenerator["default"].awrap(_models["default"].User.findAll());
 
             case 3:
               users = _context2.sent;
@@ -116,14 +116,14 @@ function () {
     key: "deleteUser",
     value: function deleteUser(request, response) {
       var id, foundUser;
-      return regeneratorRuntime.async(function deleteUser$(_context3) {
+      return _regenerator["default"].async(function deleteUser$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               id = request.params.id;
               _context3.prev = 1;
               _context3.next = 4;
-              return regeneratorRuntime.awrap(_models["default"].User.findOne({
+              return _regenerator["default"].awrap(_models["default"].User.findOne({
                 where: {
                   id: id
                 }
@@ -144,7 +144,7 @@ function () {
 
             case 7:
               _context3.next = 9;
-              return regeneratorRuntime.awrap(foundUser.destroy());
+              return _regenerator["default"].awrap(foundUser.destroy());
 
             case 9:
               return _context3.abrupt("return", response.status(202).json({
@@ -171,7 +171,7 @@ function () {
     key: "updateUser",
     value: function updateUser(request, response) {
       var id, Name, foundUser, updatedUser;
-      return regeneratorRuntime.async(function updateUser$(_context4) {
+      return _regenerator["default"].async(function updateUser$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
@@ -179,7 +179,7 @@ function () {
               Name = request.body.Name;
               _context4.prev = 2;
               _context4.next = 5;
-              return regeneratorRuntime.awrap(_models["default"].User.findOne({
+              return _regenerator["default"].awrap(_models["default"].User.findOne({
                 where: {
                   id: id
                 }
@@ -200,7 +200,7 @@ function () {
 
             case 8:
               _context4.next = 10;
-              return regeneratorRuntime.awrap(foundUser.update({
+              return _regenerator["default"].awrap(foundUser.update({
                 Name: Name
               }, {
                 where: {
@@ -233,7 +233,6 @@ function () {
       }, null, null, [[2, 15]]);
     }
   }]);
-
   return User;
 }();
 

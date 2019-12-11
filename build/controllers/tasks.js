@@ -1,19 +1,19 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
 var _models = _interopRequireDefault(require("../../database/models"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
  * Task Controller Class
@@ -23,10 +23,10 @@ var Task =
 /*#__PURE__*/
 function () {
   function Task() {
-    _classCallCheck(this, Task);
+    (0, _classCallCheck2["default"])(this, Task);
   }
 
-  _createClass(Task, null, [{
+  (0, _createClass2["default"])(Task, null, [{
     key: "createTasks",
 
     /**
@@ -37,13 +37,13 @@ function () {
      */
     value: function createTasks(request, response) {
       var newTask;
-      return regeneratorRuntime.async(function createTasks$(_context) {
+      return _regenerator["default"].async(function createTasks$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return regeneratorRuntime.awrap(_models["default"].User_Tasks.create({
+              return _regenerator["default"].awrap(_models["default"].User_Tasks.create({
                 description: request.body.description,
                 user_id: request.user_id
               }));
@@ -75,13 +75,13 @@ function () {
     key: "listUserTasks",
     value: function listUserTasks(request, response) {
       var foundTasks;
-      return regeneratorRuntime.async(function listUserTasks$(_context2) {
+      return _regenerator["default"].async(function listUserTasks$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return regeneratorRuntime.awrap(_models["default"].User_Tasks.findAll({
+              return _regenerator["default"].awrap(_models["default"].User_Tasks.findAll({
                 where: {
                   user_id: request.params.id
                 }
@@ -126,7 +126,7 @@ function () {
     key: "updateTask",
     value: function updateTask(request, response) {
       var id, description, foundTask, updatedTask;
-      return regeneratorRuntime.async(function updateTask$(_context3) {
+      return _regenerator["default"].async(function updateTask$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
@@ -134,7 +134,7 @@ function () {
               description = request.body.description;
               _context3.prev = 2;
               _context3.next = 5;
-              return regeneratorRuntime.awrap(_models["default"].User_Tasks.findOne({
+              return _regenerator["default"].awrap(_models["default"].User_Tasks.findOne({
                 where: {
                   id: id
                 }
@@ -155,7 +155,7 @@ function () {
 
             case 8:
               _context3.next = 10;
-              return regeneratorRuntime.awrap(foundTask.update({
+              return _regenerator["default"].awrap(foundTask.update({
                 description: description
               }, {
                 where: {
@@ -188,7 +188,6 @@ function () {
       }, null, null, [[2, 15]]);
     }
   }]);
-
   return Task;
 }();
 
