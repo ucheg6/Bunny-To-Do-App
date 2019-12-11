@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   User_Tasks.associate = function(models) {
     // associations can be defined here
     User_Tasks.belongsTo(models.User, {
-      foreignKey: 'user_Id',
+      foreignKey: 'user_id',
       as: 'task_owner',
       onDelete: 'CASCADE',
     })
