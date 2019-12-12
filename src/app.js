@@ -2,8 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import config from '../database/config/config'
-import router from './routes'
+import config from '../database/config/config';
+import router from './routes';
+import cors from 'cors';
 dotenv.config();
 
 // Set up express app
@@ -16,10 +17,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/v1', router);
+app.use(cors());
 
 app.get('/', (request, response) => {
-    const welcome = "Welcome to Bunny TO-DO API Version 1.0";
-    response.status(200).send(welcome);
+	const welcome = 'Welcome to Bunny TO-DO API Version 1.0';
+	response.status(200).send(welcome);
 });
 
 const env = process.env.NODE_ENV || 'development';
@@ -27,7 +29,7 @@ const port = config[env].PORT;
 
 // Start server
 app.listen(port, () => {
-    console.log(`Express server listening on ${port}`);
+	console.log(`Express server listening on ${port}`);
 });
 
 export default app;
