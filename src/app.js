@@ -9,6 +9,7 @@ dotenv.config();
 
 // Set up express app
 const app = express();
+app.use(cors());
 
 // Log incoming requests
 app.use(logger('dev'));
@@ -17,7 +18,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/v1', router);
-app.use(cors());
 
 app.get('/', (request, response) => {
 	const welcome = 'Welcome to Bunny TO-DO API Version 1.0';

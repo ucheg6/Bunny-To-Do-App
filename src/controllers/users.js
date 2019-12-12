@@ -17,7 +17,10 @@ class User {
 			const newUser = await models.User.findOrCreate({
 				where: { Name },
 			});
-			const token = generateToken(newUser[0].dataValues.id, newUser[0].dataValues.Name);
+			const token = generateToken(
+				newUser[0].dataValues.id,
+				newUser[0].dataValues.Name,
+			);
 			return response.status(201).json({
 				success: true,
 				message: `Hello Welcome to Bunny to-do app`,
@@ -52,7 +55,7 @@ class User {
 		try {
 			const foundUser = await models.User.findOne({
 				where: { id },
-			  });
+			});
 			if (!foundUser) {
 				return response.status(404).json({
 					message: 'User does not exist',
@@ -77,23 +80,25 @@ class User {
 		try {
 			const foundUser = await models.User.findOne({
 				where: { id },
-			  });
+			});
 			if (!foundUser) {
 				return response.status(404).json({
 					message: 'User does not exist',
 					success: false,
 				});
 			}
-			const updatedUser = await foundUser.update({
-				Name
-			  },
-			  {
-				where: { id }
-			  });;
+			const updatedUser = await foundUser.update(
+				{
+					Name,
+				},
+				{
+					where: { id },
+				},
+			);
 			return response.status(200).json({
 				success: true,
 				message: 'User successfully updated',
-				updatedUser
+				updatedUser,
 			});
 		} catch (error) {
 			return response.status(400).json({
